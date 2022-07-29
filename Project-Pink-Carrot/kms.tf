@@ -8,7 +8,7 @@ resource "aws_kms_key" "_" {
 }
 
 resource "aws_kms_alias" "_" {
-  name          = var.kms_alias
+  name          = "${terraform.workspace == "default" ? var.kms_alias : format("%s-%s",var.kms_alias,terraform.workspace)}"
   target_key_id = aws_kms_key._.id
 }
 
@@ -25,7 +25,7 @@ resource "aws_kms_key" "us_key" {
 }
 
 resource "aws_kms_alias" "us_key_alias" {
-  name          = var.kms_alias_usa
+  name  = "${terraform.workspace == "default" ? var.kms_alias_usa : format("%s-%s",var.kms_alias_usa,terraform.workspace)}"
   provider = aws.potato
   target_key_id = aws_kms_key.us_key.id
 }
