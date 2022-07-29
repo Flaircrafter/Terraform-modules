@@ -16,7 +16,7 @@ resource "aws_kms_alias" "_" {
 
 resource "aws_kms_key" "us_key" {
   description         = "CMK with KMS key material origin"
-  provider = aws.amerikha
+  provider = aws.northVirginia
   enable_key_rotation = true
 
   lifecycle {
@@ -26,6 +26,6 @@ resource "aws_kms_key" "us_key" {
 
 resource "aws_kms_alias" "us_key_alias" {
   name          = var.kms_alias_usa
-  provider = aws.amerikha
+  provider = aws.northVirginia
   target_key_id = aws_kms_key.us_key.id
 }
