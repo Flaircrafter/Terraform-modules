@@ -22,7 +22,7 @@ provider "aws" {
 }
 
 provider "aws" {
-  alias = "northVirginia"
+  alias = "potato"
   region = "us-east-1" // USA region
   shared_config_files      = ["/Users/knayyar/.aws/config"]
   shared_credentials_files = ["/Users/knayyar/.aws/credentials"]
